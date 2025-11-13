@@ -1,0 +1,5 @@
+{
+  "name": "Hostel Maintenance Request System",
+  "description": "A modern, fully responsive web application for students and wardens to manage hostel maintenance requests. Features separate dashboards, complaint tracking, worker assignment, and statistical reports with a futuristic glassmorphism UI.",
+  "requestFramePermissions": []
+}
