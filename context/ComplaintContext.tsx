@@ -156,7 +156,7 @@ export const ComplaintProvider: React.FC<{ children: ReactNode }> = ({ children 
       priority: 'Medium',
       submittedAt: now,
       lastUpdatedAt: now,
-      progressUpdates: [{ timestamp: now, status: 'Submitted', description: 'Complaint submitted by student.' }],
+      progressUpdates: [{ timestamp: now, status: 'Submitted', description: 'Complaint submitted by student.', author: 'Student' }],
     };
     setComplaints(prev => [newComplaint, ...prev]);
   };
@@ -178,7 +178,8 @@ export const ComplaintProvider: React.FC<{ children: ReactNode }> = ({ children 
     const progressUpdate: ProgressUpdate = {
         timestamp: new Date().toISOString(),
         status: status,
-        description: `Status updated to ${status}.`
+        description: `Status updated to ${status}.`,
+        author: 'Warden'
     }
     const updatedProgress = [...complaint.progressUpdates, progressUpdate];
     updateComplaint(id, { status, progressUpdates: updatedProgress });
@@ -196,7 +197,8 @@ export const ComplaintProvider: React.FC<{ children: ReactNode }> = ({ children 
     const progressUpdate: ProgressUpdate = {
         timestamp: new Date().toISOString(),
         status: 'Assigned',
-        description: `Assigned to ${worker?.name}. Instructions: ${instructions}`
+        description: `Assigned to ${worker?.name}. Instructions: ${instructions}`,
+        author: 'Warden',
     }
     const updatedProgress = [...complaint.progressUpdates, progressUpdate];
     updateComplaint(id, { assignedWorkerId: workerId, worker, status: ComplaintStatus.InProgress, progressUpdates: updatedProgress });
@@ -210,7 +212,8 @@ export const ComplaintProvider: React.FC<{ children: ReactNode }> = ({ children 
     const newUpdate: ProgressUpdate = {
         timestamp: new Date().toISOString(),
         status: 'Update',
-        description: description
+        description: description,
+        author: 'Warden'
     };
     const updatedProgress = [...complaint.progressUpdates, newUpdate];
     updateComplaint(id, { progressUpdates: updatedProgress });

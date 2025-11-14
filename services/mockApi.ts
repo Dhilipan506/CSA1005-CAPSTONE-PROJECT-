@@ -35,7 +35,7 @@ export const mockComplaints: Complaint[] = [
         submittedAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
         lastUpdatedAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
         progressUpdates: [
-            { timestamp: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(), status: 'Submitted', description: 'Complaint submitted by student.' }
+            { timestamp: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(), status: 'Submitted', description: 'Complaint submitted by student.', author: 'Student' }
         ],
     },
     {
@@ -53,8 +53,8 @@ export const mockComplaints: Complaint[] = [
         lastUpdatedAt: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString(),
         assignedWorkerId: 'WKR01',
         progressUpdates: [
-            { timestamp: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString(), status: 'Submitted', description: 'Complaint submitted by student.' },
-            { timestamp: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString(), status: 'Assigned', description: 'Assigned to Ramesh Kumar. Instructions: Check fan motor.' }
+            { timestamp: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString(), status: 'Submitted', description: 'Complaint submitted by student.', author: 'Student' },
+            { timestamp: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString(), status: 'Assigned', description: 'Assigned to Ramesh Kumar. Instructions: Check fan motor.', author: 'Warden' }
         ],
     },
     {
@@ -72,9 +72,9 @@ export const mockComplaints: Complaint[] = [
         lastUpdatedAt: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString(),
         assignedWorkerId: 'WKR02',
         progressUpdates: [
-            { timestamp: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString(), status: 'Submitted', description: 'Complaint submitted by student.' },
-            { timestamp: new Date(Date.now() - 6 * 24 * 60 * 60 * 1000).toISOString(), status: 'Assigned', description: 'Assigned to Suresh Singh.' },
-            { timestamp: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString(), status: 'Completed', description: 'Cleaning has been completed.' }
+            { timestamp: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString(), status: 'Submitted', description: 'Complaint submitted by student.', author: 'Student' },
+            { timestamp: new Date(Date.now() - 6 * 24 * 60 * 60 * 1000).toISOString(), status: 'Assigned', description: 'Assigned to Suresh Singh.', author: 'Warden' },
+            { timestamp: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString(), status: 'Completed', description: 'Cleaning has been completed.', author: 'Warden' }
         ],
         rating: 4,
         feedback: "The cleaning was done well, but it took a bit long to get started.",
@@ -93,7 +93,7 @@ export const mockComplaints: Complaint[] = [
         submittedAt: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString(),
         lastUpdatedAt: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString(),
         progressUpdates: [
-            { timestamp: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString(), status: 'Submitted', description: 'Complaint submitted by student.' }
+            { timestamp: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString(), status: 'Submitted', description: 'Complaint submitted by student.', author: 'Student' }
         ],
     },
 ];

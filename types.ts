@@ -34,6 +34,7 @@ export interface ProgressUpdate {
   timestamp: string;
   status: string;
   description: string;
+  author?: 'Student' | 'Warden';
 }
 
 export interface Worker {

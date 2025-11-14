@@ -5,7 +5,7 @@ import { useAuth } from '../../context/AuthContext';
 import { useComplaints } from '../../context/ComplaintContext';
 import { Complaint, ComplaintStatus } from '../../types';
 import { motion } from 'framer-motion';
-import { Star, MessageSquare, Calendar, User, CheckSquare, Clock, ArrowLeft, Send } from 'lucide-react';
+import { Star, MessageSquare, Calendar, User, CheckSquare, Clock, ArrowLeft, Send, Shield } from 'lucide-react';
 
 // Fix: Assign motion components to variables to help with type inference.
 const MotionDiv = motion.div;
@@ -133,16 +133,25 @@ const StudentComplaintDetail: React.FC = () => {
                  <MotionDiv initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="lg:col-span-1 bg-slate-800/50 p-8 rounded-2xl border border-white/10 shadow-lg">
                     <h2 className="text-2xl font-bold mb-6">Progress Timeline</h2>
                     <div className="relative">
-                        <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-slate-600"></div>
-                        <MotionUl variants={timelineVariants} initial="hidden" animate="show" className="space-y-8">
+                        <MotionUl variants={timelineVariants} initial="hidden" animate="show" className="space-y-0">
                             {complaint.progressUpdates.map((update, index) => (
-                                <MotionLi key={index} variants={timelineItemVariants} className="relative pl-12">
+                                <MotionLi key={index} variants={timelineItemVariants} className="relative pl-12 pb-8 last:pb-0">
+                                     {index < complaint.progressUpdates.length - 1 && (
+                                        <div className="absolute left-4 top-10 h-full w-0.5 bg-slate-600"></div>
+                                     )}
                                     <div className="absolute left-0 top-1 flex items-center justify-center w-8 h-8 bg-slate-700 rounded-full ring-4 ring-slate-800">
-                                        {update.status.includes('Update') || update.status.includes('Completed') ? <CheckSquare size={16} className="text-emerald-400"/> : <Clock size={16} className="text-yellow-400" />}
+                                        {update.author === 'Warden' 
+                                            ? <Shield size={16} className="text-teal-400" /> 
+                                            : <User size={16} className="text-emerald-400" />}
                                     </div>
-                                    <p className="font-semibold text-white">{update.status}</p>
-                                    <p className="text-sm text-slate-300">{update.description}</p>
-                                    <p className="text-xs text-slate-500 mt-1">{new Date(update.timestamp).toLocaleString()}</p>
+                                    <div className="flex items-center gap-4">
+                                        <p className="font-semibold text-white">{update.status}</p>
+                                        {update.author && <span className={`px-2 py-0.5 text-xs rounded-full ${update.author === 'Warden' ? 'bg-teal-500/20 text-teal-300' : 'bg-emerald-500/20 text-emerald-300'}`}>
+                                            {update.author}
+                                        </span>}
+                                    </div>
+                                    <p className="text-sm text-slate-300 mt-1">{update.description}</p>
+                                    <p className="text-xs text-slate-500 mt-2">{new Date(update.timestamp).toLocaleString()}</p>
                                 </MotionLi>
                             ))}
                         </MotionUl>
